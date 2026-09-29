@@ -1,0 +1,6 @@
+# Databricks Connect allows our Python project to
+# communicate with Databricks compute.
+databricks-connect==17.3.*
+
+# Pytest runs our automated test suite.
+pytest
