@@ -1,6 +1,0 @@
-#!/Users/user/python_projects/data_engineer/production_pyspark_exercise/transaction_pipeline/.venv/bin/python3.12
-import sys
-from databricks.connect.scripts.register_pyspark_installation import main
-if __name__ == '__main__':
-    sys.argv[0] = sys.argv[0].removesuffix('.exe')
-    sys.exit(main())

@@ -1,0 +1,28 @@
+# Python virtual environment.
+.venv/
+
+# Python cache files.
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# PyCharm project settings.
+.idea/
+
+# macOS metadata files.
+.DS_Store
+
+# pytest cache.
+.pytest_cache/
+
+# Coverage output.
+.coverage
+htmlcov/
+
+# Environment-variable files may contain secrets.
+.env
+
+# Local Databricks authentication/configuration files
+# should never be committed if they contain credentials.
+.databrickscfg
