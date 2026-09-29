@@ -1,7 +1,40 @@
 import pytest
 
 #Import the functions we want to test
-from src.validation import add_validation_columns
+from src.validation import add_validation_columns,get_validation_metrics
+
+@pytest.mark.spark
+def test_validation_metrics_are_correct(spark):
+    """
+    Verify that validation metrics correctly count
+    total, valid and invalid records.
+    """
+
+    # Create a tiny controlled dataset.
+    test_data = [
+        ("TX001", True),
+        ("TX002", True),
+        ("TX003", False),
+    ]
+
+    columns = [
+        "transaction_id",
+        "is_valid",
+    ]
+
+    # Create the Spark DataFrame.
+    df = spark.createDataFrame(
+        test_data,
+        columns
+    )
+
+    # Calculate validation metrics.
+    metrics = get_validation_metrics(df)
+
+    # Verify expected counts.
+    assert metrics["total_records"] == 3
+    assert metrics["valid_records"] == 2
+    assert metrics["invalid_records"] == 1
 
 @pytest.mark.spark
 def test_valid_transaction_is_accepted(spark):
