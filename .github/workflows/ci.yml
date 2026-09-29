@@ -1,0 +1,61 @@
+# Name displayed in the GitHub Actions interface.
+name: Transaction Pipeline CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  unit-tests:
+
+    # GitHub creates a temporary Linux machine
+    # for this CI job.
+    runs-on: ubuntu-latest
+
+    steps:
+      # --------------------------------------------------
+      # 1. DOWNLOAD THE REPOSITORY
+      # --------------------------------------------------
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      # --------------------------------------------------
+      # 2. INSTALL PYTHON
+      # --------------------------------------------------
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          # Match the Python version used by our project.
+          python-version: "3.12"
+
+
+      # --------------------------------------------------
+      # 3. INSTALL PROJECT DEPENDENCIES
+      # --------------------------------------------------
+
+      - name: Install dependencies
+        run: |
+          # Upgrade pip first.
+          python -m pip install --upgrade pip
+
+          # Install dependencies defined by the project.
+          pip install -r requirements.txt
+
+
+      # --------------------------------------------------
+      # 4. RUN FAST TESTS
+      # --------------------------------------------------
+
+      - name: Run unit tests
+        run: |
+          # Skip tests requiring real Databricks infrastructure.
+          pytest -m "not spark and not integration" -v
