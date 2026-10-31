@@ -25,7 +25,7 @@ def calculate_transaction_amount(df:DataFrame)-> DataFrame:
     return (
         df
         .withColumn(
-            "total_amount",
+            "amount",
             (F.col("quantity")) * (F.col("unit_price"))
         )
     )

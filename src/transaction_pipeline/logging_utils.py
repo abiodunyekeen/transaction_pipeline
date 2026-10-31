@@ -20,6 +20,11 @@ def get_logger(name: str) -> logging.Logger:
     # Get or create a logger with the supplied name.
     logger = logging.getLogger(name)
 
+    # Prevent records from bubbling up to the root logger,
+    # which would print each message a second time using
+    # Python's default format.
+    logger.propagate = False
+
     # Set the minimum logging level.
     # INFO means:
     # DEBUG messages are ignored,

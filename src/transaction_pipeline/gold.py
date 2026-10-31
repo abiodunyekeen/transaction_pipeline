@@ -35,13 +35,13 @@ def build_daily_country_gold(silver_df:DataFrame)-> DataFrame:
         .groupBy("transaction_date","country")
         .agg(
             # Sum the transaction amount for total revenue.
-            F.sum("total_amount").alias("total_revenue"),
+            F.sum("amount").alias("total_revenue"),
             # Count the number of transaction rows.
             F.count("*").alias("transaction_count"),
             # Count unique customers within each Gold group.
-            F.countDistinct("customer_id").alias("unique_customer"),
+            F.countDistinct("customer_id").alias("unique_customers"),
             # Calculate the average transaction amount.
-            F.avg("total_amount").alias("average_transaction_value")
+            F.avg("amount").alias("average_transaction_value")
 
         )
     )

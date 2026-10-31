@@ -1,7 +1,7 @@
 import pytest
 
 #Import the functions we want to test
-from src.validation import add_validation_columns,get_validation_metrics
+from src import add_validation_columns,get_validation_metrics
 
 @pytest.mark.spark
 def test_validation_metrics_are_correct(spark):

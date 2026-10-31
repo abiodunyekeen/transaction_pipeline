@@ -1,6 +1,6 @@
 import pytest
 # Import the transformation to test
-from src.transformations import calculate_transaction_amount
+from src import calculate_transaction_amount
 
 @pytest.mark.spark
 def test_transaction_amount_is_calculated_correctly(spark):

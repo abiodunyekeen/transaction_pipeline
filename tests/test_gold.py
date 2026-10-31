@@ -4,7 +4,7 @@ import pytest
 from datetime import date
 
 # Import the Gold transformation being tested.
-from src.gold import build_daily_country_gold
+from src import build_daily_country_gold
 
 @pytest.mark.spark
 def test_daily_country_gold_aggregation(spark):

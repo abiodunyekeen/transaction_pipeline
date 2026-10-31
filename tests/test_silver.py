@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 # Import the function being tested.
-from src.silver import deduplicate_latest_transactions
+from src import deduplicate_latest_transactions
 
 @pytest.mark.spark
 def test_latest_transaction_version_is_retained(spark):

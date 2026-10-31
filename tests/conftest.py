@@ -2,7 +2,7 @@
 import pytest
 
 # Import our Databricks Spark-session factory
-from src.spark_session import get_spark_session
+from src import get_spark_session
 
 @pytest.fixture(scope="session")
 def spark():
